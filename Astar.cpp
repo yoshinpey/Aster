@@ -44,7 +44,7 @@ vector<vector<int>> Astar::findShortestPath(vector<vector<int>>& maze, int start
             int ny = current->getY() + dy[i];
 
             // 迷路の範囲内かつ通行可能な場合
-            if (nx >= 0 && nx < maze.size() && ny >= 0 && ny < maze[0].size() && maze[nx][ny] == 0)
+            if (nx >= 0 && nx < maze.size() && ny >= 0 && ny < maze[0].size() && maze[nx][ny] == CELL_TYPE::FLOOR)
             {
                 int newRCost = current->getCost() + 1;
                 int newHCost = std::abs(nx - goalX) + std::abs(ny - goalY); // マンハッタン距離
