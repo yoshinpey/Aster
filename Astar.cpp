@@ -1,5 +1,13 @@
 #include "Astar.h"
 
+Astar::Astar()
+{
+}
+
+Astar::~Astar()
+{
+}
+
 // A*アルゴリズムの実装
 vector<vector<int>> Astar::findShortestPath(vector<vector<int>>& maze, int startX, int startY, int goalX, int goalY)
 {
@@ -47,7 +55,7 @@ vector<vector<int>> Astar::findShortestPath(vector<vector<int>>& maze, int start
             if (nx >= 0 && nx < maze.size() && ny >= 0 && ny < maze[0].size() && maze[nx][ny] == CELL_TYPE::FLOOR)
             {
                 int newRCost = current->getCost() + 1;
-                int newHCost = std::abs(nx - goalX) + std::abs(ny - goalY); // マンハッタン距離
+                int newHCost = std::abs(nx - goalX) + std::abs(ny - goalY);
 
                 Node* neighbor = new Node(nx, ny, newRCost, newHCost, current);
 

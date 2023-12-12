@@ -4,13 +4,6 @@
 
 using std::vector;
 
-enum CELL_TYPE
-{
-    FLOOR = 0,
-    WALL,
-    PATH
-};
-
 class Node
 {
 private:
@@ -39,6 +32,14 @@ public:
 class Astar
 {
 private:
+
+    enum CELL_TYPE
+    {
+        FLOOR = 0,
+        WALL,
+        PATH
+    };
+
     // ”äŠr‚·‚é
     struct CompareNodeCost
     {
@@ -53,9 +54,11 @@ private:
     const int dy[4] = { 0, -1, 0, 1 };
 
 public:
+    Astar();
+    ~Astar();
     // A*ƒAƒ‹ƒSƒŠƒYƒ€‚ÌŽÀ‘•
-    std::vector<std::vector<int>> findShortestPath(std::vector<std::vector<int>>& maze, int startX, int startY, int goalX, int goalY);
+    vector<vector<int>> findShortestPath(vector<vector<int>>& maze, int startX, int startY, int goalX, int goalY);
 
     // Œ‹‰Ê‚ð•\Ž¦
-    void displayMaze(std::vector<std::vector<int>>& maze);
+    void displayMaze(vector<vector<int>>& maze);
 };
