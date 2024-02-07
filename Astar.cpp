@@ -32,7 +32,14 @@ vector<vector<int>> Astar::findShortestPath(vector<vector<int>>& maze, int start
             while (current != nullptr)
             {
                 result[current->getX()][current->getY()] = 2; // 最短経路の印をつける
+                Node* temp = current;
                 current = current->getParent();
+                delete temp;
+            }
+            // openSetに残っているノードも解放
+            for (auto node : openSet)
+            {
+                delete node;
             }
             return result;
         }
@@ -68,8 +75,14 @@ vector<vector<int>> Astar::findShortestPath(vector<vector<int>>& maze, int start
     }
 
     // ゴールに到達できない場合
+    // openSetに残っているノードを解放
+    for (auto node : openSet)
+    {
+        delete node;
+    }
     return result; // 全てのセルが0で初期化されている
 }
+
 
 // 結果を表示
 void Astar::displayMaze(vector<vector<int>>& maze)
